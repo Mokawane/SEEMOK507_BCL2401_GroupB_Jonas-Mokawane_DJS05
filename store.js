@@ -48,13 +48,13 @@ let notifiers = [];
  * @type {GetState}
  */
 
-const getState = () => currentState;
+export const getState = () => currentState;
 
 /**
  * @type {Update}
  * @param {Action} action
  */
-const update = (action) => {
+export const update = (action) => {
     if(typeof action !== "function") {
         throw new Error('Action is required to be a function');
     }
@@ -68,7 +68,7 @@ const update = (action) => {
 /**
  *@type {Subscribe}
  */
-const subscribe = (notify) => {
+export const subscribe = (notify) => {
     notifiers.push(notify);
 
     const unsubscribe = () => {
