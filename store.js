@@ -28,3 +28,17 @@ const getState = () => currentState;
  */
 
 let notifiers = [];
+
+/**
+ * @param {Action} action
+ */
+const update = (action) => {
+    if(typeof action !== "function") {
+        throw new Error('Action is required to be a function');
+    }
+
+    const prev = Object.freeze({... currentState });
+    currentState = Object.freeze({ ... action(prev) });
+
+    notifiers.forEach((notify) => notify(prev, currentState));
+};
