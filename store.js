@@ -1,20 +1,6 @@
-const initialState = {
-    value: 0,
-};
-
 /**
  * @typedef {object} State
  * @prop {number} value
- */
-
-let currentState = initialState;
-
-const getState = () => currentState;
-
-/**
- * @callback Action 
- * @param {State} state 
- * @returns {State}
  */
 
 /**
@@ -24,12 +10,48 @@ const getState = () => currentState;
  */
 
 /**
- * @type {Array<Notify>}
+ * @callback Action 
+ * @param {State} state 
+ * @returns {State}
  */
 
+/**
+ * @callback Update
+ * @param {Action} action
+ */
+
+/**
+ * @callback Subscribe
+ * @param {Notify} notify
+ */
+
+/**
+ * @callback GetState
+ * @returns {State}
+ */
+
+const initialState = { 
+    value: 0
+};
+
+/**
+ * @type {State}
+ */
+let currentState = initialState;
+
+/**
+ * @type {Array<Notify>}
+ */
 let notifiers = [];
 
 /**
+ * @type {GetState}
+ */
+
+const getState = () => currentState;
+
+/**
+ * @type {Update}
  * @param {Action} action
  */
 const update = (action) => {
@@ -44,8 +66,7 @@ const update = (action) => {
 };
 
 /**
- * @param {Notify} notify
- * @returns {Function}
+ *@type {Subscribe}
  */
 const subscribe = (notify) => {
     notifiers.push(notify);
