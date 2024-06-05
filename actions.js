@@ -5,7 +5,7 @@ export const increase = (state) => ({
 
 export const decrease = (state) => ({
     ... state,
-    value: -1,
+    value: state.value - 1,
 });
 
 export const reset = (state) => ({
